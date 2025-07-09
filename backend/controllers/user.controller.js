@@ -5,16 +5,18 @@ const postUser = async (req, res) => {
     try {
         const input = req.body
         const inputFile = req.files?.image;
-        let imgUrl = "";
-        if (inputFile) {
-            const filePath = file.tempFilePath;
-            imgUrl = uploadToCloudinary(filePath,'profile');
-        }
+        console.log("inputFile",inputFile);
+        console.log("body",input);
         const userName = input.username
         const user = await User.findOne({username:userName})
         if(user){
             res.status(400).json("username is taken. Please try again with another username")
             return;
+        }
+        let imgUrl = "";
+        if (inputFile) {
+            const filePath = inputFile.tempFilePath;
+            imgUrl = await uploadToCloudinary(filePath,'profile');
         }
         const newUser = new User({
             username: userName,
