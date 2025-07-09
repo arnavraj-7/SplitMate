@@ -4,6 +4,7 @@ import CORS from 'cors'
 import connectDB from './utils/database.js'
 import transaction from './routes/transactions.routes.js'
 import users from './routes/users.routes.js'
+import fileUpload from 'express-fileupload'
 
 
 configDotenv()
@@ -19,7 +20,8 @@ app.use(CORS(
     }
 ))
 app.use(express.json())
-
+app.use(express.urlencoded({ extended: true }))
+app.use(fileUpload({useTempFiles: true}))
 
 
 
