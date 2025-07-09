@@ -1,7 +1,11 @@
 import mongoose from "mongoose";
 
 const UserSchema = new mongoose.Schema({
-    name: {
+    username: {
+        type: String,
+        required: true
+    },
+    name:{
         type: String,
         required: true
     },
@@ -10,13 +14,6 @@ const UserSchema = new mongoose.Schema({
         default:'',
         required: false
     },
-    transactions: [
-        {
-            type:mongoose.Schema.Types.ObjectId,
-            ref:'Transaction',
-            required:false
-        }
-    ]
 
 }, {
     timestamps: true
