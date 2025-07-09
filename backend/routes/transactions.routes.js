@@ -5,6 +5,6 @@ const router = Router();
 
 router.get('/transactions/:id',getTransactionbyId);
 router.post('/transactions/:id',postTransactionbyId);
-router.get('/transactions/details/:id',);
+router.get('/transactions/details/:id',getTransactionbyId);
 
 export default router

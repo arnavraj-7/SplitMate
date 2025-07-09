@@ -16,6 +16,7 @@ try{
     return fileUrl.secure_url;
 }catch(error){
     console.log("Error in uploading to cloudinary",error)
+    return ""
 }
 }
 
